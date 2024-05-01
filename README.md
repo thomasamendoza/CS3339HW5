@@ -31,7 +31,7 @@
 >
 > The simulator will be invoked with three command-line arguments as follows
 >
-> ` .cache sim num entries associativity memory reference file`
+> ` ./cache sim num entries associativity memory reference file`
 >
 > where num entries is the total number of entries in the cache and associativity is the
 > associativity of the cache to be simulated. **You may assume that num entries is a power of
