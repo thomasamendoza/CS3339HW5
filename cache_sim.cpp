@@ -1,3 +1,4 @@
+#include "cache_sim.h"
 #include <iostream>
 #include <fstream>
 #include <cstring>
@@ -25,17 +26,14 @@ int main(int argc, char *argv[])
     output.open("cache_sim_output");
     output.close();
     */
-
+    input.close();
     return 0;
 }
 
 /*
  * outputTable: function which prints out output table to console
- * for testing only, TO BE DELETED LATER
  *
- * @param
- *
- * @return nothing
+ * @param reference file's data
  */
 void outputTable(char *arr[])
 {
