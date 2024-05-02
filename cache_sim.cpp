@@ -3,17 +3,20 @@
 
 #include <iostream>
 #include <fstream>
-#include <cstring>
+#include <string>
 using namespace std;
+
+void outputTable(char *arr[], ofstream& out, ifstream& in, int entries);
 
 int main(int argc, char *argv[])
 {
     ofstream output;
     ifstream input;
-    input.open("memory_reference_file");
-
     int numEntries = stoi(argv[1]);
     int associativity = stoi(argv[2]);
+    
+    output.open("cache_sim_output");
+    input.open("memory_reference_file");
 
     // termates if input requirements are not met
     if ((numEntries % 2 != 0) || (numEntries % associativity != 0))
@@ -22,6 +25,9 @@ int main(int argc, char *argv[])
         return -1;
     }
 
+    outputTable(argv, output, input, numEntries);
+
+    output.close();
     input.close();
     return 0;
 }
@@ -31,14 +37,17 @@ int main(int argc, char *argv[])
  *
  * @param reference file's data
  */
-void outputTable(char *arr[], ofstream out, int entries)
+void outputTable(char *arr[], ofstream& out, ifstream& in, int entries)
 {
     CacheSim cache(entries);
-    out << "ADDR : HIT/MISS\n";
-    for (int curr = 0; curr++; curr <= entries)
-    {
+    int ADDR;
 
-        out << ": ";
+    out << "IND ADDR : HIT/MISS\n"; // table header
+    for (int curr = 0; curr++; curr <= entries) // table body
+    {
+        in >> ADDR;
+        out << curr << " | " << ADDR << ": ";
+        if(cache.access(ADDR) ? out << "MISS\n" : out << "HIT\n" );
     }
 
     return;
