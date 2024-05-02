@@ -35,7 +35,7 @@ int main(int argc, char *argv[])
         foo = cache.access(ADDR);
         output << curr << " | " << ADDR << ": ";
 
-        if (foo)
+        if (!foo)
         {
             output << "MISS\n";
         }

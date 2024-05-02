@@ -19,6 +19,7 @@ public:
     CacheSim(int entries)
     {
         numEntries = entries;
+        cache = vector<Entry>(numEntries);
     }
 
     /*
