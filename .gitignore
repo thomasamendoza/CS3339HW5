@@ -1,1 +1,5 @@
 /.vscode
+/cache_sim*
+Makefile
+a.out
+cache_sim

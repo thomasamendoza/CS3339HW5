@@ -6,15 +6,13 @@
 #include <string>
 using namespace std;
 
-void outputTable(char *arr[], ofstream& out, ifstream& in, int entries);
-
 int main(int argc, char *argv[])
 {
     ofstream output;
     ifstream input;
     int numEntries = stoi(argv[1]);
     int associativity = stoi(argv[2]);
-    
+
     output.open("cache_sim_output");
     input.open("memory_reference_file");
 
@@ -25,30 +23,31 @@ int main(int argc, char *argv[])
         return -1;
     }
 
-    outputTable(argv, output, input, numEntries);
+    CacheSim cache(numEntries);
+    int ADDR;
+    bool foo;
+    int curr = 1;
+
+    output << "IND ADDR : HIT/MISS\n"; // table header
+    while (input >> ADDR)              // table body
+    {
+
+        foo = cache.access(ADDR);
+        output << curr << " | " << ADDR << ": ";
+
+        if (foo)
+        {
+            output << "MISS\n";
+        }
+        else
+        {
+            output << "HIT\n";
+        }
+
+        curr++;
+    }
 
     output.close();
     input.close();
     return 0;
-}
-
-/*
- * outputTable: function which prints out output table to output file
- *
- * @param reference file's data
- */
-void outputTable(char *arr[], ofstream& out, ifstream& in, int entries)
-{
-    CacheSim cache(entries);
-    int ADDR;
-
-    out << "IND ADDR : HIT/MISS\n"; // table header
-    for (int curr = 0; curr++; curr <= entries) // table body
-    {
-        in >> ADDR;
-        out << curr << " | " << ADDR << ": ";
-        if(cache.access(ADDR) ? out << "MISS\n" : out << "HIT\n" );
-    }
-
-    return;
 }
