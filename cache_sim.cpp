@@ -12,11 +12,12 @@ int main(int argc, char *argv[])
     ifstream input;
     int numEntries = stoi(argv[1]);
     int associativity = stoi(argv[2]);
+    string fileName = argv[3];
 
+    input.open(fileName);
     output.open("cache_sim_output");
-    input.open("memory_reference_file");
 
-    // termates if input requirements are not met
+    // termates if input requirements are not met regarding number of entries and associativity
     if ((numEntries % 2 != 0) || (numEntries % associativity != 0))
     {
         cout << "Invalid input: please review input requirements.\n";
