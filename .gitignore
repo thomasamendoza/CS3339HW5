@@ -1,5 +1,11 @@
+# junk folders
 /.vscode
 /cache_sim*
-Makefile
+
+#output files
 a.out
 cache_sim
+Makefile
+#i/o files
+cache_sim_output
+memory_reference_file
