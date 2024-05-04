@@ -2,8 +2,12 @@
 
 ### When utilizing this repository, please abide by Texas State University's Honor Code. Defined by [UPPS No. 07.10.01](https://policies.txst.edu/university-policies/07-10-01.html)
 
-> ## Description
->
+## Overview
+
+The proceeding program is a cache simulator developed by myself, with a simple implementation designed for educational purposes. My program is structured to simulate cache operations based on input parameters such as the number of cache entries, associativity, and a reference file of memory addresses in integer format, all provided by the user. The program processes these parameters to simulate and report cache hits or misses for each memory reference. The output is saved in a file with each memory reference's result indicated as a hit or miss alongside the address
+
+## Assignment Description
+
 > For this homework, you will implement a cache simulator.
 >
 > The simulator will take as input:
